@@ -24,8 +24,8 @@ int main()
 
 	for(;;)
 	{
-		BitAction state = !GPIO_ReadOutputDataBit(GPIOC, GPIO_Pin_8);
-		GPIO_WriteBit(GPIOC, GPIO_Pin_8, state);
+		BitAction state = !GPIO_ReadOutputDataBit(GPIOC, GPIO_Pin_9);
+		GPIO_WriteBit(GPIOC, GPIO_Pin_9, state);
 		delay(3 * 1000);
 	}
 
@@ -38,7 +38,7 @@ void init_LED()
 
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC, ENABLE);
 
-	GPIO_InitStructure.GPIO_Pin		= GPIO_Pin_8;
+	GPIO_InitStructure.GPIO_Pin		= GPIO_Pin_9;
 	GPIO_InitStructure.GPIO_Speed	= GPIO_Speed_50MHz;
 	GPIO_InitStructure.GPIO_Mode		= GPIO_Mode_Out_PP;
 	GPIO_Init(GPIOC, &GPIO_InitStructure);
