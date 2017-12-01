@@ -1,152 +1,116 @@
 #include "main.h"
-#include <string.h>
 
-int main(void);
-void init_LED(void);
-void init_TIM2(void);
-void init_USART1(void);
-char USART1_putc(const char ch);
-int USART1_puts(const char * str);
-
-
-void delay(uint32_t time_delay)
+void SystemClock_Config(void);
+void delay(int val)
 {
-	uint32_t i;
-	for (i = 0; i < time_delay; i++);
+    for(int i=0; i<val;i++){}
 }
 
-int main()
+
+
+int main(void)
 {
-	//init_USART1();
-	init_LED();
-	//init_TIM2();
+    SysTick_Config(SystemCoreClock / 100);      // Конфигурируем таймер SysTick на срабатывание 100 раз в секунду 
+    SystemClock_Config();
+    
+RCC->APB2ENR |=  RCC_APB2ENR_AFIOEN; // Включить тактирование порта А 
+RCC->APB2ENR |=  RCC_APB2ENR_IOPAEN; 
+// Настройка выводов согласно выполняемым функциям: 
+// Вывод управления NSS: выход двухтактный, общего назначения, 50 МГц 
+GPIOA->CRL   |=  GPIO_CRL_MODE4; 
+GPIOA->CRL   &= ~GPIO_CRL_CNF4; 
+GPIOA->BSRR   =  GPIO_BSRR_BS4; 
+// Вывод SCK: выход двухтактный, альтернативная функция, 50 МГц 
+GPIOA->CRL   |=  GPIO_CRL_MODE5; 
+GPIOA->CRL   &= ~GPIO_CRL_CNF5; 
+GPIOA->CRL   |=  GPIO_CRL_CNF5_1; // Вывод MISO: вход цифровой с подтягивающим резистором, подтяжка к плюсу 
+GPIOA->CRL   &= ~GPIO_CRL_MODE6; 
+GPIOA->CRL   &= ~GPIO_CRL_CNF6; 
+GPIOA->CRL   |=  GPIO_CRL_CNF6_1; 
+GPIOA->BSRR   =  GPIO_BSRR_BS6; // Вывод MOSI: выход двухтактный, альтернативная функция, 50 МГц 
+GPIOA->CRL   |=  GPIO_CRL_MODE7; 
+GPIOA->CRL   &= ~GPIO_CRL_CNF7; 
+GPIOA->CRL   |=  GPIO_CRL_CNF7_1; 
+// Настройка SPI 
+RCC->APB2ENR |= RCC_APB2ENR_SPI1EN; 
+// Включить тактирование 
+SPI1->CR1 = 0x0000; 
+// Очистить первый управляющий регистр 
+SPI1->CR1 |= SPI_CR1_DFF;
+// Бит11 Формат данных 0-8бит 1-16бит 
+SPI1->CR1 |= SPI_CR1_SSM; // Бит9 SSM – выбирает источник сигнала NSS (0 — с внешнего вывода, 1 — программно); 
+SPI1->CR1 |= SPI_CR1_SSI; // Бит8 SSI – если SSM = 1 определяет значение NSS; 
+SPI1->CR1 |= SPI_CR1_LSBFIRST; // Бит7 LSBFIRST – задаёт способ передачи (0 - старшим, 1 — младшим разрядом вперёд); 
+SPI1->CR1 |= SPI_CR1_SPE; // Бит6 SPE - работа SPI (1 – вкл. 0 – откл.) Бит3-5 BR[2:0] — делитель скорости обмена fPCLK/x (000:2, 001:4, 010:8, 011:16, 100:32, 101:64, 110:128, 111:256) 
+SPI1->CR1 |= SPI_CR1_BR_0 | SPI_CR1_BR_1 | SPI_CR1_BR_2; // Задать скорость fPCLK/x 
+SPI1->CR1 |= SPI_CR1_MSTR; // MSTR - делает модуль ведущим(1)/ведомым(0); 
+SPI1->CR1 |= SPI_CR1_CPOL; // CPOL - задаёт полярность тактового сигнала; 
+SPI1->CR1 |= SPI_CR1_CPHA; // CPHA - задаёт фазу тактового сигнала 0-\ 1-/; 
+SPI1->CR2 = 0x0000; // Очистить второй управляющий регистр 
 
-
-	for(;;)
-	{
-		BitAction state = !GPIO_ReadOutputDataBit(GPIOC, GPIO_Pin_8);
-		GPIO_WriteBit(GPIOC, GPIO_Pin_8, state);
-		delay(3 * 1000);
-	}
-
-	return 0;
+    LL_APB2_GRP1_EnableClock(LL_APB2_GRP1_PERIPH_GPIOC);
+    LL_GPIO_Init(GPIOC,&(LL_GPIO_InitTypeDef)
+    {
+        .Pin         = LL_GPIO_PIN_9
+        ,.Mode       = LL_GPIO_MODE_OUTPUT
+        ,.OutputType = LL_GPIO_OUTPUT_PUSHPULL
+        ,.Pull       = LL_GPIO_PULL_UP
+        ,.Speed      = LL_GPIO_SPEED_FREQ_HIGH
+    });
+    
+    loop:while (1)
+    {
+        delay(500);
+        LL_GPIO_TogglePin(GPIOC,LL_GPIO_PIN_9);
+    }
 }
 
-void init_LED()
+/* ==============   BOARD SPECIFIC CONFIGURATION CODE BEGIN    ============== */
+/**
+  * @brief  System Clock Configuration
+  *         The system Clock is configured as follow : 
+  *            System Clock source            = PLL (HSE)
+  *            SYSCLK(Hz)                     = 24000000
+  *            HCLK(Hz)                       = 24000000
+  *            AHB Prescaler                  = 1
+  *            APB1 Prescaler                 = 1
+  *            APB2 Prescaler                 = 1
+  *            HSE Frequency(Hz)              = 8000000
+  *            HSE PREDIV1                    = 2
+  *            PLLMUL                         = 6
+  *            Flash Latency(WS)              = 0
+  * @param  None
+  * @retval None
+  */
+void SystemClock_Config(void)
 {
-	GPIO_InitTypeDef GPIO_InitStructure;
+  /* Enable HSE oscillator */
+  LL_RCC_HSE_Enable();
+  while(LL_RCC_HSE_IsReady() != 1)
+  {
+  };
 
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC, ENABLE);
+  /* Main PLL configuration and activation */
+  LL_RCC_PLL_ConfigDomain_SYS(LL_RCC_PLLSOURCE_HSE_DIV_2, LL_RCC_PLL_MUL_6);
+  LL_RCC_PLL_Enable();
+  while(LL_RCC_PLL_IsReady() != 1)
+  {
+  };
 
-	GPIO_InitStructure.GPIO_Pin		= GPIO_Pin_8;
-	GPIO_InitStructure.GPIO_Speed	= GPIO_Speed_50MHz;
-	GPIO_InitStructure.GPIO_Mode		= GPIO_Mode_Out_PP;
-	GPIO_Init(GPIOC, &GPIO_InitStructure);
+  /* Sysclk activation on the main PLL */
+  LL_RCC_SetAHBPrescaler(LL_RCC_SYSCLK_DIV_1);
+  LL_RCC_SetSysClkSource(LL_RCC_SYS_CLKSOURCE_PLL);
+  while(LL_RCC_GetSysClkSource() != LL_RCC_SYS_CLKSOURCE_STATUS_PLL)
+  {
+  };
 
+  /* Set APB1 & APB2 prescaler */
+  LL_RCC_SetAPB1Prescaler(LL_RCC_APB1_DIV_1);
+  LL_RCC_SetAPB2Prescaler(LL_RCC_APB2_DIV_1);
 
-}/*init_LED*/
+  /* Set systick to 1ms */
+  SysTick_Config(24000000 / 1000);
 
-/*------------------------ init_TIM2 ------------------------*/
-void init_TIM2()
-{
-	TIM_TimeBaseInitTypeDef TIM_TimeBaseInitStructure;
-	NVIC_InitTypeDef NVIC_InitStructure;
-
-	NVIC_InitStructure.NVIC_IRQChannel 						= TIM2_IRQn;
-	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority 	= 0;
-	NVIC_InitStructure.NVIC_IRQChannelSubPriority 			= 1;
-	NVIC_InitStructure.NVIC_IRQChannelCmd 					= ENABLE;
-	NVIC_Init(&NVIC_InitStructure);
-
-	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);
-
-	TIM_TimeBaseInitStructure.TIM_ClockDivision 			= TIM_CKD_DIV1;
-	TIM_TimeBaseInitStructure.TIM_CounterMode 			= TIM_CounterMode_Up;
-	TIM_TimeBaseInitStructure.TIM_RepetitionCounter 		= 0x0000;
-	TIM_TimeBaseInitStructure.TIM_Prescaler 				= TIMER_PRESCALER;
-	TIM_TimeBaseInitStructure.TIM_Period 				= TIMER_MAX_PERIOD;
-	TIM_TimeBaseInit(TIM2, &TIM_TimeBaseInitStructure);
-
-	TIM_ITConfig(TIM2, TIM_IT_Update, ENABLE);
-	TIM_Cmd(TIM2, ENABLE);
-
-}/*init_TIM2*/
-
-/*------------------------- init_USART1 ---------------------------*/
-void init_USART1()
-{
-	GPIO_InitTypeDef  GPIO_InitStructure;
-	USART_InitTypeDef USART_InitStructure;
-
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA|RCC_APB2Periph_USART1, ENABLE);
-
-	GPIO_InitStructure.GPIO_Pin   = GPIO_Pin_10;
-	//GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-	GPIO_InitStructure.GPIO_Mode  = GPIO_Mode_IN_FLOATING;
-	GPIO_Init(GPIOA, &GPIO_InitStructure);
-
-	GPIO_InitStructure.GPIO_Pin   = GPIO_Pin_9;
-	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-	GPIO_InitStructure.GPIO_Mode  = GPIO_Mode_AF_PP;
-	GPIO_Init(GPIOA, &GPIO_InitStructure);
-
-	USART_InitStructure.USART_BaudRate            = 115200;
-	USART_InitStructure.USART_WordLength          = USART_WordLength_8b;
-	USART_InitStructure.USART_StopBits            = USART_StopBits_1;
-	USART_InitStructure.USART_Parity              = USART_Parity_No;
-	USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
-	USART_InitStructure.USART_Mode                = (USART_Mode_Rx | USART_Mode_Tx);
-
-	USART_Init(USART1, &USART_InitStructure);
-	USART_Cmd(USART1, ENABLE);
-
-}/*init_USART1*/
-
-/*----------------------------- USART1_putc ------------------------------*/
-char USART1_putc(const char ch)
-{
-	uint32_t cnt = 100000;
-
-	USART_SendData(USART1, (uint8_t) ch );
-
-	while ( (USART_GetFlagStatus(USART1, USART_FLAG_TC) == RESET) && cnt-- );
-
-	if (0 == cnt)
-		return -1;
-
-	return ch;
-}/*USART1_putc*/
-
-/*------------------------------ USART1_puts -----------------------------*/
-int USART1_puts(const char * str)
-{
-	int r = -1;
-	uint8_t i;
-	int size;
-
-	if (str == NULL)
-		return r;
-
-	size = strlen(str);
-
-	for (i = 0; i < size; i++)
-	{
-		 if ( USART1_putc( *(str + i) ) == -1 )
-			 return r;
-	}
-
-	r = 0;
-	return r;
-}/* USART1_puts */
-
-
-void TIM2_IRQHandler(void)
-{
-	//static uint8_t led_state = 0;
-
-	BitAction state = !GPIO_ReadOutputDataBit(GPIOC, GPIO_Pin_8);
-	GPIO_WriteBit(GPIOC, GPIO_Pin_8,state);
-
-
-	TIM_ClearITPendingBit(TIM2, TIM_IT_Update);
+  /* Update CMSIS variable (which can be updated also through SystemCoreClockUpdate function) */
+  SystemCoreClock = 24000000;
 }

@@ -1,49 +1,43 @@
 #---------------------------------------------------------------------------
 #	
-# Attention points when programming the F103 as well as the F100
-# https://sites.google.com/site/mcu314/stm32-experiences/usb-and-freertos
 #
-#-MMD : Like -MD except mention only user header files, not system header files
+#
+#
+#
 #---------------------------------------------------------------------------
-#VERSION			= Debug
-VERSION		= Release
-TOOL_PATH		= arm-none-eabi
-SHELL			= bash
-
-INC_PATH		= C:\Developer\ARM\gcc-arm-none-eabi\arm-none-eabi\include
-LIB_PATH		= C:\Developer\ARM\gcc-arm-none-eabi\arm-none-eabi\include\lib
-
-OOCD_VERSION			= 
-OOCD_INTERFACE_CONFIG	= interface/ftdi_jtag.cfg
-OOCD_TARGET_CONFIG		= target/stm32f1x.cfg
-
 PRJ_NAME		= magic
+VERSION			= Release
+SHELL			= bash
+TOOL_PATH		= arm-none-eabi
 
-SRC				= startup_stm32f10x_md.s
-SRC				+= core_cm3.c
-SRC				+= system_stm32f10x.c
-SRC				+= misc.c
-SRC				+= stm32f10x_rcc.c
-SRC				+= stm32f10x_gpio.c
-SRC				+= stm32f10x_usart.c
-SRC				+= stm32f10x_tim.c
-SRC				+= stm32f10x_it.c
-SRC				+= main.c
+SRC_DIR			= Src
+INC_DIR			= Inc
+OBJ_DIR			= obj
+OUT_DIR			= bin
 
-INCLUDE			= $(INC_DIR)
-INCLUDE			+= $(INC_PATH)
+##
+## GCC ARM
+##
+INC_PATH	= C:\Developer\ARM\gcc-arm-none-eabi\arm-none-eabi\include
+LIB_PATH	= C:\Developer\ARM\gcc-arm-none-eabi\arm-none-eabi\lib
 
-DEFINE			= STM32F10X_MD_VL
-DEFINE			+= USE_STDPERIPH_DRIVER
+INC_PATH	+= C:/Developer/SDK/STM32/CMSIS/Include
+INC_PATH	+= C:/Developer/SDK/STM32/CMSIS/Device/ST/STM32F1xx/Include
+INC_PATH	+= C:/Developer/SDK/STM32/STM32F1xx_HAL_Driver/Inc
+
+
+
+DEFINE			= STM32F100xB
+DEFINE			+= HSE_VALUE=8000000U
+DEFINE			+= USE_FULL_LL_DRIVER
 DEFINE			+= F_CPU=8000000
 
-
-OPTIMIZE	 	= 2
+OPTIMIZE	 	= 0
 DEBUG			= 3
-LD_SCRIPT		= stm32_flash.ld
+LD_SCRIPT		= linker_flash.ld
 
 #----------------------------------------------------------------------------
-#	Секция параметров сборки
+#	Compiler Options
 #----------------------------------------------------------------------------
 CROSS_COMPILE	= arm-none-eabi-
 CC				= $(CROSS_COMPILE)gcc
@@ -81,34 +75,32 @@ LDFLAGS			+= -Wl,-Map,$(IMAGE).map,--cref -Wl,--gc-sections
 CPPCFLAGS		= $(CCFLAGS)
 CPPCFLAGS		+= -x c++
 
-PROGFLAGS		= -d0
-#PROGFLAGS		+= -f $(OOCD_INTERFACE_CONFIG) -f $(OOCD_TARGET_CONFIG)
-PROGFLAGS		+= -c init -c targets
-PROGFLAGS		+= -c "halt" -c "flash probe 0"
-PROGFLAGS		+= -c "flash write_image erase $(IMAGE).elf 0x00000000 elf"
-PROGFLAGS		+= -c "reset run" -c shutdown
 
-SRC_DIR			= src
-INC_DIR			= inc
-
-OBJ_DIR			= obj
-OUT_DIR			= bin
-
+INCLUDE			= $(INC_DIR)
+INCLUDE			+= $(INC_PATH)
 IMAGE			= $(OUT_DIR)/$(PRJ_NAME)
 
 #----------------------------------------------------------------------------
-#	Секция компиляции
+#	
 #----------------------------------------------------------------------------
 
-SOURCES		= $(wildcard $(addprefix $(SRC_DIR)/,$(SRC)))
+vpath %.c .
+vpath %.s .
+vpath %.S .
+vpath %.c Src
+vpath %.c /C/Developer/SDK/STM32/STM32F1xx_HAL_Driver/Src 
+
+SOURCES 	= $(wildcard Src/*.c)
+SOURCES		+= $(wildcard /C/Developer/SDK/STM32/STM32F1xx_HAL_Driver/Src/*.c)
+SOURCES		+= startup_stm32f10x_md_vl.s
 
 ifneq ($(filter %.c,$(notdir $(SOURCES))),)
-OBJECTS		+= $(addprefix $(OBJ_DIR)/,$(patsubst %.c, %.o,$(filter %.c,$(notdir $(SOURCES)))))
+	OBJECTS		+= $(addprefix $(OBJ_DIR)/,$(patsubst %.c, %.o,$(filter %.c,$(notdir $(SOURCES)))))
 endif
 
-ifneq ($(filter %.cpp,$(notdir $(SOURCES))),)
-OBJECTS		+= $(addprefix $(OBJ_DIR)/,$(patsubst %.cpp, %.o,$(filter %.cpp,$(notdir $(SOURCES)))))
-endif
+#ifneq ($(filter %.cpp,$(notdir $(SOURCES))),)
+#OBJECTS		+= $(addprefix $(OBJ_DIR)/,$(patsubst %.cpp, %.o,$(filter %.cpp,$(notdir $(SOURCES)))))
+#endif
 
 ifneq ($(filter %.s,$(notdir $(SOURCES))),)
 OBJECTS		+= $(addprefix $(OBJ_DIR)/,$(patsubst %.s, %.o,$(filter %.s,$(notdir $(SOURCES)))))
@@ -118,37 +110,39 @@ ifneq ($(filter %.S,$(notdir $(SOURCES))),)
 OBJECTS		+= $(addprefix $(OBJ_DIR)/,$(patsubst %.S, %.o,$(filter %.S,$(notdir $(SOURCES)))))
 endif
 
-$(OBJ_DIR)/%.o:$(SRC_DIR)/%.c
-	@echo $<
+
+$(OBJ_DIR)/%.o:%.c
 	@echo "--"
-	@echo "--"
-	$(CC) $(CCFLAGS) -MMD -c $< -o $@
+	@echo "--"$<
+	@echo "--" 
+	@echo "--" 
+	$(CC) $(CCFLAGS) -MMD -c $< -o $@ 
 
 $(OBJ_DIR)/%.o:$(SRC_DIR)/%.cpp
 	@echo $<
 	@echo "123------------------------------------------------------"
 	$(CPPC) $(CPPCFLAGS) -MMD -c $< -o $@
 
-$(OBJ_DIR)/%.o:$(SRC_DIR)/%.s $(SRC_DIR)/%.S
+$(OBJ_DIR)/%.o:%.s
 	@echo $<
 	@echo ">>>"
+	@echo ">>>" $<
 	@echo ">>>"
 	$(AS) $(ASFLAGS) -c $< -o $@
 
 #---------------------------------------------------------------------------
-#	Секция сборки
+#	Г‘ГҐГЄГ¶ГЁГї Г±ГЎГ®Г°ГЄГЁ
 #---------------------------------------------------------------------------
 #-- $(PROG) $(PROGFLAGS) 
 Program: elf
-	@echo ">>"
-	@echo ">> COMPILE COMPLETE"
-	@echo ">> "
+	@echo ">>>"
+	@echo ">>>Build Complete"
+	@echo ">>>"
 	$(SIZE) $(IMAGE).elf
 
 $(VERSION): bin hex size
 	@echo "--------------------- COMPLETE -----------------------"
 	
-
 
 bin:$(IMAGE).bin
 

@@ -1,0 +1,22 @@
+--cpu Cortex-M3
+"stm32vl-discovery\startup_stm32f100xb.o"
+"stm32vl-discovery\system_stm32f1xx.o"
+"stm32vl-discovery\stm32f1xx_ll_utils.o"
+"stm32vl-discovery\stm32f1xx_ll_usart.o"
+"stm32vl-discovery\stm32f1xx_ll_tim.o"
+"stm32vl-discovery\stm32f1xx_ll_spi.o"
+"stm32vl-discovery\stm32f1xx_ll_rtc.o"
+"stm32vl-discovery\stm32f1xx_ll_rcc.o"
+"stm32vl-discovery\stm32f1xx_ll_pwr.o"
+"stm32vl-discovery\stm32f1xx_ll_gpio.o"
+"stm32vl-discovery\stm32f1xx_ll_exti.o"
+"stm32vl-discovery\stm32f1xx_ll_dma.o"
+"stm32vl-discovery\stm32f1xx_ll_dac.o"
+"stm32vl-discovery\stm32f1xx_ll_crc.o"
+"stm32vl-discovery\stm32f1xx_ll_adc.o"
+"stm32vl-discovery\main.o"
+"stm32vl-discovery\stm32f1xx_it.o"
+--strict --scatter "STM32VL-Discovery\STM32VL-Discovery.sct"
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "STM32VL-Discovery.map" -o STM32VL-Discovery\STM32VL-Discovery.axf
