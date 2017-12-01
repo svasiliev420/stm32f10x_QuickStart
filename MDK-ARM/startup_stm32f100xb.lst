@@ -480,11 +480,11 @@ ARM Macro Assembler    Page 8
               00000000 
 Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M3 --apcs=interw
 ork --depend=stm32vl-discovery\startup_stm32f100xb.d -ostm32vl-discovery\startu
-p_stm32f100xb.o -IC:\content\github\stm32F10x_Quick_LL\MDK-ARM\RTE -IC:\Keil_v5
-\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include -IC:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DF
-P\2.2.0\Device\Include --predefine="__EVAL SETA 1" --predefine="__UVISION_VERSI
-ON SETA 515" --predefine="_RTE_ SETA 1" --predefine="STM32F10X_MD_VL SETA 1" --
-list=startup_stm32f100xb.lst startup_stm32f100xb.s
+p_stm32f100xb.o -IC:\content\github\stm32f10x_QuickStart\MDK-ARM\RTE -IC:\Keil_
+v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include -IC:\Keil_v5\ARM\PACK\Keil\STM32F1xx_
+DFP\2.2.0\Device\Include --predefine="__EVAL SETA 1" --predefine="__UVISION_VER
+SION SETA 515" --predefine="_RTE_ SETA 1" --predefine="STM32F10X_MD_VL SETA 1" 
+--list=startup_stm32f100xb.lst startup_stm32f100xb.s
 
 
 

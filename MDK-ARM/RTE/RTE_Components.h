@@ -3,7 +3,7 @@
  * Auto generated Run-Time-Environment Component Configuration File
  *      *** Do not modify ! ***
  *
- * Project: 'Quick-LL' 
+ * Project: 'PROJECT' 
  * Target:  'STM32VL-Discovery' 
  */
 

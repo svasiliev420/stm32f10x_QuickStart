@@ -13,54 +13,49 @@ int main(void)
     SysTick_Config(SystemCoreClock / 100);      // Конфигурируем таймер SysTick на срабатывание 100 раз в секунду 
     SystemClock_Config();
     
-RCC->APB2ENR |=  RCC_APB2ENR_AFIOEN; // Включить тактирование порта А 
-RCC->APB2ENR |=  RCC_APB2ENR_IOPAEN; 
-// Настройка выводов согласно выполняемым функциям: 
-// Вывод управления NSS: выход двухтактный, общего назначения, 50 МГц 
-GPIOA->CRL   |=  GPIO_CRL_MODE4; 
-GPIOA->CRL   &= ~GPIO_CRL_CNF4; 
-GPIOA->BSRR   =  GPIO_BSRR_BS4; 
-// Вывод SCK: выход двухтактный, альтернативная функция, 50 МГц 
-GPIOA->CRL   |=  GPIO_CRL_MODE5; 
-GPIOA->CRL   &= ~GPIO_CRL_CNF5; 
-GPIOA->CRL   |=  GPIO_CRL_CNF5_1; // Вывод MISO: вход цифровой с подтягивающим резистором, подтяжка к плюсу 
-GPIOA->CRL   &= ~GPIO_CRL_MODE6; 
-GPIOA->CRL   &= ~GPIO_CRL_CNF6; 
-GPIOA->CRL   |=  GPIO_CRL_CNF6_1; 
-GPIOA->BSRR   =  GPIO_BSRR_BS6; // Вывод MOSI: выход двухтактный, альтернативная функция, 50 МГц 
-GPIOA->CRL   |=  GPIO_CRL_MODE7; 
-GPIOA->CRL   &= ~GPIO_CRL_CNF7; 
-GPIOA->CRL   |=  GPIO_CRL_CNF7_1; 
-// Настройка SPI 
-RCC->APB2ENR |= RCC_APB2ENR_SPI1EN; 
-// Включить тактирование 
-SPI1->CR1 = 0x0000; 
-// Очистить первый управляющий регистр 
-SPI1->CR1 |= SPI_CR1_DFF;
-// Бит11 Формат данных 0-8бит 1-16бит 
-SPI1->CR1 |= SPI_CR1_SSM; // Бит9 SSM – выбирает источник сигнала NSS (0 — с внешнего вывода, 1 — программно); 
-SPI1->CR1 |= SPI_CR1_SSI; // Бит8 SSI – если SSM = 1 определяет значение NSS; 
-SPI1->CR1 |= SPI_CR1_LSBFIRST; // Бит7 LSBFIRST – задаёт способ передачи (0 - старшим, 1 — младшим разрядом вперёд); 
-SPI1->CR1 |= SPI_CR1_SPE; // Бит6 SPE - работа SPI (1 – вкл. 0 – откл.) Бит3-5 BR[2:0] — делитель скорости обмена fPCLK/x (000:2, 001:4, 010:8, 011:16, 100:32, 101:64, 110:128, 111:256) 
-SPI1->CR1 |= SPI_CR1_BR_0 | SPI_CR1_BR_1 | SPI_CR1_BR_2; // Задать скорость fPCLK/x 
-SPI1->CR1 |= SPI_CR1_MSTR; // MSTR - делает модуль ведущим(1)/ведомым(0); 
-SPI1->CR1 |= SPI_CR1_CPOL; // CPOL - задаёт полярность тактового сигнала; 
-SPI1->CR1 |= SPI_CR1_CPHA; // CPHA - задаёт фазу тактового сигнала 0-\ 1-/; 
-SPI1->CR2 = 0x0000; // Очистить второй управляющий регистр 
-
-    LL_APB2_GRP1_EnableClock(LL_APB2_GRP1_PERIPH_GPIOC);
-    LL_GPIO_Init(GPIOC,&(LL_GPIO_InitTypeDef)
-    {
-        .Pin         = LL_GPIO_PIN_9
-        ,.Mode       = LL_GPIO_MODE_OUTPUT
-        ,.OutputType = LL_GPIO_OUTPUT_PUSHPULL
-        ,.Pull       = LL_GPIO_PULL_UP
-        ,.Speed      = LL_GPIO_SPEED_FREQ_HIGH
-    });
+    RCC->APB2ENR |=  RCC_APB2ENR_AFIOEN; // Включить тактирование порта А 
+    RCC->APB2ENR |=  RCC_APB2ENR_IOPAEN; 
+    
+    // Настройка выводов согласно выполняемым функциям: 
+    // Вывод управления NSS: выход двухтактный, общего назначения, 50 МГц 
+    GPIOA->CRL   |=  GPIO_CRL_MODE4; 
+    GPIOA->CRL   &= ~GPIO_CRL_CNF4; 
+    GPIOA->BSRR   =  GPIO_BSRR_BS4; 
+    // Вывод SCK: выход двухтактный, альтернативная функция, 50 МГц 
+    GPIOA->CRL   |=  GPIO_CRL_MODE5; 
+    GPIOA->CRL   &= ~GPIO_CRL_CNF5; 
+    GPIOA->CRL   |=  GPIO_CRL_CNF5_1; // Вывод MISO: вход цифровой с подтягивающим резистором, подтяжка к плюсу 
+    GPIOA->CRL   &= ~GPIO_CRL_MODE6; 
+    GPIOA->CRL   &= ~GPIO_CRL_CNF6; 
+    GPIOA->CRL   |=  GPIO_CRL_CNF6_1; 
+    GPIOA->BSRR   =  GPIO_BSRR_BS6; // Вывод MOSI: выход двухтактный, альтернативная функция, 50 МГц 
+    GPIOA->CRL   |=  GPIO_CRL_MODE7; 
+    GPIOA->CRL   &= ~GPIO_CRL_CNF7; 
+    GPIOA->CRL   |=  GPIO_CRL_CNF7_1;
+    
+    // Настройка SPI 
+    RCC->APB2ENR |= RCC_APB2ENR_SPI1EN; 
+    // Включить тактирование 
+    SPI1->CR1 = 0x0000;             // Очистить первый управляющий регистр 
+    SPI1->CR1 |= SPI_CR1_DFF;       // Бит11 Формат данных 0-8бит 1-16бит 
+    SPI1->CR1 |= SPI_CR1_SSM;       // Бит9 SSM – выбирает источник сигнала NSS (0 — с внешнего вывода, 1 — программно); 
+    SPI1->CR1 |= SPI_CR1_SSI;       // Бит8 SSI – если SSM = 1 определяет значение NSS; 
+    SPI1->CR1 |= SPI_CR1_LSBFIRST;  // Бит7 LSBFIRST – задаёт способ передачи (0 - старшим, 1 — младшим разрядом вперёд); 
+    SPI1->CR1 |= SPI_CR1_SPE;       // Бит6 SPE - работа SPI (1 – вкл. 0 – откл.) Бит3-5 BR[2:0] — делитель скорости обмена fPCLK/x (000:2, 001:4, 010:8, 011:16, 100:32, 101:64, 110:128, 111:256) 
+    SPI1->CR1 |= SPI_CR1_BR_0 | SPI_CR1_BR_1 | SPI_CR1_BR_2; // Задать скорость fPCLK/x 
+    SPI1->CR1 |= SPI_CR1_MSTR;      // MSTR - делает модуль ведущим(1)/ведомым(0); 
+    SPI1->CR1 |= SPI_CR1_CPOL;      // CPOL - задаёт полярность тактового сигнала; 
+    SPI1->CR1 |= SPI_CR1_CPHA;      // CPHA - задаёт фазу тактового сигнала 0-\ 1-/; 
+    SPI1->CR2 = 0x0000;             // Очистить второй управляющий регистр 
+    
+    RCC->APB2ENR |=  LL_APB2_GRP1_PERIPH_GPIOC; 
+    LL_GPIO_SetPinMode(GPIOC, LL_GPIO_PIN_9,    LL_GPIO_MODE_OUTPUT);
+    LL_GPIO_SetPinPull(GPIOC, LL_GPIO_PIN_9,    LL_GPIO_PULL_UP);
+    LL_GPIO_SetPinSpeed(GPIOC, LL_GPIO_PIN_9,   LL_GPIO_MODE_OUTPUT_2MHz);
     
     loop:while (1)
     {
-        delay(500);
+        delay(500*2048);
         LL_GPIO_TogglePin(GPIOC,LL_GPIO_PIN_9);
     }
 }
