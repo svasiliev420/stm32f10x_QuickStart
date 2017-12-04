@@ -16,6 +16,7 @@
 "stm32vl-discovery\stm32f1xx_ll_adc.o"
 "stm32vl-discovery\main.o"
 "stm32vl-discovery\stm32f1xx_it.o"
+"stm32vl-discovery\usart.o"
 --strict --scatter "STM32VL-Discovery\STM32VL-Discovery.sct"
 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

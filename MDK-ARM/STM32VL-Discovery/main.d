@@ -27,3 +27,4 @@ stm32vl-discovery\main.o: C:\Developer\SDK\STM32\STM32F1xx_HAL_Driver\Inc\stm32f
 stm32vl-discovery\main.o: C:\Developer\SDK\STM32\STM32F1xx_HAL_Driver\Inc\stm32f1xx_ll_tim.h
 stm32vl-discovery\main.o: C:\Developer\SDK\STM32\STM32F1xx_HAL_Driver\Inc\stm32f1xx_ll_usart.h
 stm32vl-discovery\main.o: C:\Developer\SDK\STM32\STM32F1xx_HAL_Driver\Inc\stm32f1xx_ll_wwdg.h
+stm32vl-discovery\main.o: ../Src/USART/usart.h
