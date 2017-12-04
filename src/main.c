@@ -14,7 +14,6 @@ int main(void)
     SystemClock_Config();
     
     INIT_USART_CLI420();
-    USART_DMA_Flush();
     
     loop:while (1)
     {
