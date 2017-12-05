@@ -1,16 +1,26 @@
-#include "misc.h"
-#include "crc.h"
+/**
+  ******************************************************************************
+  * @file    
+  * @author  
+  * @version 
+  * @date    
+  * @brief   
+  ******************************************************************************
+
+*/
+    #include "crc.h"
 
 
-uint32_t  revbit(uint32_t  Data)
-{
+    uint32_t  revbit(uint32_t  Data)
+    {
         __RBIT(Data);
-        //asm("rbit r0,r0");  // Аргумент передаётся через r0. Над ним и выполнить команду rbit
+        //asm("rbit r0,r0");
         return Data;
-}
-//https://www.keil.com/pack/doc/CMSIS/Core/html/group__intrinsic__CPU__gr.html#ga4717abc17af5ba29b1e4c055e0a0d9b8
-unsigned int CalcCRC32(unsigned char *Buf, unsigned int Len)
-{
+    }
+
+    //https://www.keil.com/pack/doc/CMSIS/Core/html/group__intrinsic__CPU__gr.html#ga4717abc17af5ba29b1e4c055e0a0d9b8
+    unsigned int CRC32_Calc(unsigned char *Buf, unsigned int Len)
+    {
         unsigned int i;
         unsigned int Temp;
         
@@ -38,6 +48,5 @@ unsigned int CalcCRC32(unsigned char *Buf, unsigned int Len)
         return Temp;
         // Обработать оставшиеся байты (классическим не аппаратным методом), если их число не было кратно 4
         //i = Len & 3;
-}
-
-
+    }
+    

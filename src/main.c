@@ -1,5 +1,9 @@
 #include "main.h"
-#include "USART/usart.h"
+
+#include "intercom/intercom.h"
+
+#include "hostapi/host.h"
+#include "hostapi/host_opcode.h"
 
 void SystemClock_Config(void);
 void delay(int val)
@@ -7,17 +11,19 @@ void delay(int val)
     for(int i=0; i<val;i++){}
 }
 
-
-
 int main(void)
 {
     SystemClock_Config();
     
-    INIT_USART_CLI420();
+    host_Bind(USER_1, hostapi_MCU_MEMREAD ,1 );
+    host_Bind(USER_2, hostapi_MCU_MEMWRITE,1 );
+    
+    INTERCOM_Setup();
     
     loop:while (1)
     {
-        delay(500*2048);
+        delay(1500*2048);
+
     }
 }
 

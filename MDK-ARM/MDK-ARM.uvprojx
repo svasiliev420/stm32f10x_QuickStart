@@ -349,7 +349,7 @@
           </ArmAdsMisc>
           <Cads>
             <interw>1</interw>
-            <Optim>4</Optim>
+            <Optim>1</Optim>
             <oTime>0</oTime>
             <SplitLS>0</SplitLS>
             <OneElfS>0</OneElfS>
@@ -515,17 +515,72 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>User/USART</GroupName>
+          <GroupName>User/intercom</GroupName>
           <Files>
             <File>
-              <FileName>usart.h</FileName>
+              <FileName>intercom.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\Src\USART\usart.h</FilePath>
+              <FilePath>..\Src\intercom\intercom.h</FilePath>
             </File>
             <File>
-              <FileName>usart.c</FileName>
+              <FileName>_Handler.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\USART\usart.c</FilePath>
+              <FilePath>..\Src\intercom\_Handler.c</FilePath>
+            </File>
+            <File>
+              <FileName>_Device.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\intercom\_Device.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>User/hostapi</GroupName>
+          <Files>
+            <File>
+              <FileName>host_opcode.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Src\hostapi\host_opcode.h</FilePath>
+            </File>
+            <File>
+              <FileName>host.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Src\hostapi\host.h</FilePath>
+            </File>
+            <File>
+              <FileName>host_proc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\hostapi\host_proc.c</FilePath>
+            </File>
+            <File>
+              <FileName>host.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\hostapi\host.c</FilePath>
+            </File>
+            <File>
+              <FileName>hostapi_CMSIS.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\hostapi\hostapi_CMSIS.c</FilePath>
+            </File>
+            <File>
+              <FileName>hostapi_MCU.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\hostapi\hostapi_MCU.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>User/crc</GroupName>
+          <Files>
+            <File>
+              <FileName>crc.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Src\crc\crc.h</FilePath>
+            </File>
+            <File>
+              <FileName>crc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\crc\crc.c</FilePath>
             </File>
           </Files>
         </Group>

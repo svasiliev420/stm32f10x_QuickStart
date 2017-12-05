@@ -16,7 +16,13 @@
 "stm32vl-discovery\stm32f1xx_ll_adc.o"
 "stm32vl-discovery\main.o"
 "stm32vl-discovery\stm32f1xx_it.o"
-"stm32vl-discovery\usart.o"
+"stm32vl-discovery\_handler.o"
+"stm32vl-discovery\_device.o"
+"stm32vl-discovery\host_proc.o"
+"stm32vl-discovery\host.o"
+"stm32vl-discovery\hostapi_cmsis.o"
+"stm32vl-discovery\hostapi_mcu.o"
+"stm32vl-discovery\crc.o"
 --strict --scatter "STM32VL-Discovery\STM32VL-Discovery.sct"
 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

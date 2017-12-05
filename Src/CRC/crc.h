@@ -1,8 +1,12 @@
-#ifndef TINY_CRC
-#define TINY_CRC
+#ifndef __DEVICE_CRC32
+#define __DEVICE_CRC32
 
 
-uint32_t  revbit(uint32_t  Data);
-unsigned int CalcCRC32(unsigned char *Buf, unsigned int Len);
+    #include "stdint.h"
+    
+    #include "stm32f1xx.h"
+
+
+    extern unsigned int CRC32_Calc(unsigned char *, unsigned int );
 
 #endif
