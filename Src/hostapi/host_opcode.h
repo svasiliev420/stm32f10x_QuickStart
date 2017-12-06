@@ -49,9 +49,9 @@
     #define DATA_LIGHT      __DATA+0x5
     #define DATA_BUTTON     __DATA+0x6
 
-    #define USER_1          __USER+0x01
-    #define USER_2          __USER+0x02
-    #define USER_3          __USER+0x03
+    #define MEMREAD          __USER+0x01
+    #define MEMWRITE         __USER+0x02
+    #define USER_3           __USER+0x03
 
     extern int  hostapi_PROTO_MODE    (char*);
     extern int  hostapi_PROTO_CONNECT (char*);

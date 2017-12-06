@@ -10,7 +10,7 @@
     #include "stm32f1xx_ll_gpio.h"
     #include "stm32f1xx_ll_dma.h"
     
-    void INTERCOM_Send();
+    void INTERCOM_Send(void *);
     void INTERCOM_Setup();
      
     extern uint8_t  device_bufferTx[];
@@ -25,6 +25,4 @@
     extern uint32_t        _xgpio_pinTX;
     extern uint32_t        _xgpio_pinRX;
     
-	
-
 #endif

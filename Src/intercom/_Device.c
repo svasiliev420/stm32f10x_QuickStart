@@ -11,7 +11,7 @@
     #include "intercom.h"
     
 //////////////////////////
-/// DEVICE PERIPH
+/// DEVICE HARDWARE
 /////////////////////////
     USART_TypeDef*  _xusart      = USART1;
     
@@ -24,7 +24,7 @@
     uint32_t        _xgpio_pinRX = LL_GPIO_PIN_10;
     
 //////////////////////////
-/// DEVICE VARIABLE
+/// DEVICE ATTRIBUTEs
 /////////////////////////
     uint8_t  device_use_CRC = 1;
     uint8_t  device_bufferTx[32];

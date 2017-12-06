@@ -15,8 +15,8 @@ int main(void)
 {
     SystemClock_Config();
     
-    host_Bind(USER_1, hostapi_MCU_MEMREAD ,1 );
-    host_Bind(USER_2, hostapi_MCU_MEMWRITE,1 );
+    host_Bind(MEMREAD , hostapi_MCU_MEMREAD ,1 );
+    host_Bind(MEMWRITE, hostapi_MCU_MEMWRITE,1 );
     
     INTERCOM_Setup();
     
