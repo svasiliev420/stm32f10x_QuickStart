@@ -1,9 +1,7 @@
 #include "main.h"
 
-#include "intercom/intercom.h"
-
-#include "hostapi/host.h"
-#include "hostapi/host_opcode.h"
+#include "intercom/header.h"
+#include "hostapi/core.h"
 
 void SystemClock_Config(void);
 void delay(int val)

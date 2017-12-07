@@ -27,7 +27,7 @@ stm32vl-discovery\main.o: C:\Developer\SDK\STM32\STM32F1xx_HAL_Driver\Inc\stm32f
 stm32vl-discovery\main.o: C:\Developer\SDK\STM32\STM32F1xx_HAL_Driver\Inc\stm32f1xx_ll_tim.h
 stm32vl-discovery\main.o: C:\Developer\SDK\STM32\STM32F1xx_HAL_Driver\Inc\stm32f1xx_ll_usart.h
 stm32vl-discovery\main.o: C:\Developer\SDK\STM32\STM32F1xx_HAL_Driver\Inc\stm32f1xx_ll_wwdg.h
-stm32vl-discovery\main.o: ../Src/intercom/intercom.h
+stm32vl-discovery\main.o: ../Src/intercom/header.h
 stm32vl-discovery\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
-stm32vl-discovery\main.o: ../Src/hostapi/host.h
+stm32vl-discovery\main.o: ../Src/hostapi/core.h
 stm32vl-discovery\main.o: ../Src/hostapi/host_opcode.h
