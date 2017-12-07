@@ -162,7 +162,7 @@
         <Mm>
           <WinNumber>1</WinNumber>
           <SubType>0</SubType>
-          <ItemText>buff</ItemText>
+          <ItemText>tx</ItemText>
           <AccSizeX>0</AccSizeX>
         </Mm>
       </MemoryWindow1>
@@ -206,6 +206,10 @@
         <Entry>
           <Name>System Viewer\GPIOA</Name>
           <WinId>35905</WinId>
+        </Entry>
+        <Entry>
+          <Name>System Viewer\SPI1</Name>
+          <WinId>35902</WinId>
         </Entry>
         <Entry>
           <Name>System Viewer\USART1</Name>
@@ -488,8 +492,8 @@
       <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\Src\intercom\intercom.h</PathWithFileName>
-      <FilenameWithoutPath>intercom.h</FilenameWithoutPath>
+      <PathWithFileName>..\Src\intercom\header.h</PathWithFileName>
+      <FilenameWithoutPath>header.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -501,8 +505,8 @@
       <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\Src\intercom\_Handler.c</PathWithFileName>
-      <FilenameWithoutPath>_Handler.c</FilenameWithoutPath>
+      <PathWithFileName>..\Src\intercom\Device_Handler.c</PathWithFileName>
+      <FilenameWithoutPath>Device_Handler.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -514,8 +518,8 @@
       <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\Src\intercom\_Device.c</PathWithFileName>
-      <FilenameWithoutPath>_Device.c</FilenameWithoutPath>
+      <PathWithFileName>..\Src\intercom\Device.c</PathWithFileName>
+      <FilenameWithoutPath>Device.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -523,7 +527,7 @@
 
   <Group>
     <GroupName>User/hostapi</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -548,8 +552,8 @@
       <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\Src\hostapi\host.h</PathWithFileName>
-      <FilenameWithoutPath>host.h</FilenameWithoutPath>
+      <PathWithFileName>..\Src\hostapi\core.h</PathWithFileName>
+      <FilenameWithoutPath>core.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -561,8 +565,8 @@
       <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\Src\hostapi\host_proc.c</PathWithFileName>
-      <FilenameWithoutPath>host_proc.c</FilenameWithoutPath>
+      <PathWithFileName>..\Src\hostapi\host_vm.c</PathWithFileName>
+      <FilenameWithoutPath>host_vm.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -574,8 +578,8 @@
       <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\Src\hostapi\host.c</PathWithFileName>
-      <FilenameWithoutPath>host.c</FilenameWithoutPath>
+      <PathWithFileName>..\Src\hostapi\host_core.c</PathWithFileName>
+      <FilenameWithoutPath>host_core.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -587,21 +591,8 @@
       <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\Src\hostapi\hostapi_CMSIS.c</PathWithFileName>
-      <FilenameWithoutPath>hostapi_CMSIS.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>6</GroupNumber>
-      <FileNumber>26</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <Focus>0</Focus>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\Src\hostapi\hostapi_MCU.c</PathWithFileName>
-      <FilenameWithoutPath>hostapi_MCU.c</FilenameWithoutPath>
+      <PathWithFileName>..\Src\hostapi\api_MCU.c</PathWithFileName>
+      <FilenameWithoutPath>api_MCU.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -615,7 +606,7 @@
     <RteFlg>0</RteFlg>
     <File>
       <GroupNumber>7</GroupNumber>
-      <FileNumber>27</FileNumber>
+      <FileNumber>26</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -628,7 +619,7 @@
     </File>
     <File>
       <GroupNumber>7</GroupNumber>
-      <FileNumber>28</FileNumber>
+      <FileNumber>27</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>

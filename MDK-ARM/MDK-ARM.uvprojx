@@ -518,19 +518,19 @@
           <GroupName>User/intercom</GroupName>
           <Files>
             <File>
-              <FileName>intercom.h</FileName>
+              <FileName>header.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\Src\intercom\intercom.h</FilePath>
+              <FilePath>..\Src\intercom\header.h</FilePath>
             </File>
             <File>
-              <FileName>_Handler.c</FileName>
+              <FileName>Device_Handler.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\intercom\_Handler.c</FilePath>
+              <FilePath>..\Src\intercom\Device_Handler.c</FilePath>
             </File>
             <File>
-              <FileName>_Device.c</FileName>
+              <FileName>Device.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\intercom\_Device.c</FilePath>
+              <FilePath>..\Src\intercom\Device.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -543,29 +543,24 @@
               <FilePath>..\Src\hostapi\host_opcode.h</FilePath>
             </File>
             <File>
-              <FileName>host.h</FileName>
+              <FileName>core.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\Src\hostapi\host.h</FilePath>
+              <FilePath>..\Src\hostapi\core.h</FilePath>
             </File>
             <File>
-              <FileName>host_proc.c</FileName>
+              <FileName>host_vm.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\hostapi\host_proc.c</FilePath>
+              <FilePath>..\Src\hostapi\host_vm.c</FilePath>
             </File>
             <File>
-              <FileName>host.c</FileName>
+              <FileName>host_core.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\hostapi\host.c</FilePath>
+              <FilePath>..\Src\hostapi\host_core.c</FilePath>
             </File>
             <File>
-              <FileName>hostapi_CMSIS.c</FileName>
+              <FileName>api_MCU.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\hostapi\hostapi_CMSIS.c</FilePath>
-            </File>
-            <File>
-              <FileName>hostapi_MCU.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Src\hostapi\hostapi_MCU.c</FilePath>
+              <FilePath>..\Src\hostapi\api_MCU.c</FilePath>
             </File>
           </Files>
         </Group>
