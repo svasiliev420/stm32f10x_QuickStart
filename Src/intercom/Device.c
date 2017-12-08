@@ -58,6 +58,7 @@
         LL_APB2_GRP1_EnableClock( LL_APB2_GRP1_PERIPH_AFIO );
         LL_APB2_GRP1_EnableClock( LL_APB2_GRP1_PERIPH_GPIOA );
         
+        IS_I2C_ALL_INSTANCE
         LL_GPIO_SetPinMode  (_xgpio, _xgpio_pinTX,  LL_GPIO_MODE_ALTERNATE );
         LL_GPIO_SetPinSpeed (_xgpio, _xgpio_pinTX,  LL_GPIO_SPEED_FREQ_LOW );
         LL_GPIO_SetPinPull  (_xgpio, _xgpio_pinRX,  LL_GPIO_PULL_UP );

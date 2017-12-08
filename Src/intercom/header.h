@@ -15,7 +15,7 @@
     {
         uint32_t crc;
         uint16_t dsize;
-        uint8_t  dorigin;
+        uint8_t  dorigin; //pointer
     }STRUCT_FRAME32;
     
     void INTERCOM_Send(void *,uint16_t);
