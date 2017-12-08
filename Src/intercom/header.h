@@ -14,10 +14,8 @@
     typedef struct
     {
         uint32_t crc;
-        uint32_t id;
         uint16_t dsize;
         uint8_t  dorigin;
-        
     }STRUCT_FRAME32;
     
     void INTERCOM_Send(void *,uint16_t);

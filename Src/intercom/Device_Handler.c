@@ -32,7 +32,6 @@
         if(_xdma->ISR & DMA_ISR_TEIF4) { } //.Если произошла ошибка при обмене
          
     }
-    
     //
     // INTERCOM RECIEVE MESSAGE
     //
@@ -42,9 +41,9 @@
         {
             if(device_use_CRC == 1)
             {
-                uint32_t* ref    = (uint32_t*)&device_bufferRx + 0;
-                uint8_t*  refData= (uint8_t*)ref + 4;
-                uint32_t crc     = CRC32_Calc( refData, 32 - 4);
+                uint32_t *ref    = (uint32_t*)&device_bufferRx + 0;
+                uint8_t  *refData= (uint8_t*)ref + 5;
+                uint32_t  crc    = CRC32_Calc( refData, 32 - 4);
                 if( crc^ref == 0 ) //0xFFFFFFFFul;
                 {
                     host_Exec32(refData);

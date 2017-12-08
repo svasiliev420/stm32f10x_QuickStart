@@ -42,8 +42,7 @@
 /////////////////////////    
     void INTERCOM_Send(void *_myData, uint16_t _mySize)
     {
-        tx->crc     = 0xFFFFFFFF;               
-        tx->id      = rx->crc;                  
+        tx->crc     = 0xFFFFFFFF;             
         tx->dsize   = _mySize + __SIZE_FRAME-2; 
         tx->dorigin = NULL;                     
         

@@ -153,7 +153,7 @@ I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include\cmsis_armcc.h)(0x5625E9A0)
 I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include\core_cmFunc.h)(0x5625E9A0)
 I (C:\Developer\SDK\STM32\CMSIS\Device\ST\STM32F1xx\Include\system_stm32f1xx.h)(0x591B03C4)
 I (C:\Developer\SDK\STM32\STM32F1xx_HAL_Driver\Inc\stm32f1xx_ll_bus.h)(0x591B03DC)
-F (../Src/main.c)(0x5A29625D)(--c99 -c --cpu Cortex-M3 -D__EVAL -g -W -O0 --apcs=interwork -I../Inc -IC:\Developer\SDK\STM32\CMSIS\Device\ST\STM32F1xx\Include -IC:\Developer\SDK\STM32\STM32F1xx_HAL_Driver\Inc --C99-I C:\content\github\stm32F1xx_QuickStart\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32F10X_MD_VL -DSTM32F100xB -DHSE_VALUE="8000000U" -DUSE_FULL_LL_DRIVER-o stm32vl-discovery\main.o --omf_browse stm32vl-discovery\main.crf --depend stm32vl-discovery\main.d)
+F (../Src/main.c)(0x5A299A43)(--c99 -c --cpu Cortex-M3 -D__EVAL -g -W -O0 --apcs=interwork -I../Inc -IC:\Developer\SDK\STM32\CMSIS\Device\ST\STM32F1xx\Include -IC:\Developer\SDK\STM32\STM32F1xx_HAL_Driver\Inc --C99-I C:\content\github\stm32F1xx_QuickStart\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32F10X_MD_VL -DSTM32F100xB -DHSE_VALUE="8000000U" -DUSE_FULL_LL_DRIVER-o stm32vl-discovery\main.o --omf_browse stm32vl-discovery\main.crf --depend stm32vl-discovery\main.d)
 I (../Inc/main.h)(0x5A238F37)
 I (C:\Developer\SDK\STM32\STM32F1xx_HAL_Driver\Inc\stm32f1xx_ll_rcc.h)(0x591B03DC)
 I (C:\Developer\SDK\STM32\CMSIS\Device\ST\STM32F1xx\Include\stm32f1xx.h)(0x591B03C4)
@@ -182,7 +182,7 @@ I (C:\Developer\SDK\STM32\STM32F1xx_HAL_Driver\Inc\stm32f1xx_ll_spi.h)(0x591B03D
 I (C:\Developer\SDK\STM32\STM32F1xx_HAL_Driver\Inc\stm32f1xx_ll_tim.h)(0x591B03DB)
 I (C:\Developer\SDK\STM32\STM32F1xx_HAL_Driver\Inc\stm32f1xx_ll_usart.h)(0x591B03DA)
 I (C:\Developer\SDK\STM32\STM32F1xx_HAL_Driver\Inc\stm32f1xx_ll_wwdg.h)(0x591B03DB)
-I (../Src/intercom/header.h)(0x5A28C642)
+I (../Src/intercom/header.h)(0x5A2A521F)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x54C28C08)
 I (../Src/hostapi/core.h)(0x5A281D17)
 I (../Src/hostapi/host_opcode.h)(0x5A27ECBC)
@@ -216,9 +216,9 @@ I (C:\Developer\SDK\STM32\STM32F1xx_HAL_Driver\Inc\stm32f1xx_ll_spi.h)(0x591B03D
 I (C:\Developer\SDK\STM32\STM32F1xx_HAL_Driver\Inc\stm32f1xx_ll_tim.h)(0x591B03DB)
 I (C:\Developer\SDK\STM32\STM32F1xx_HAL_Driver\Inc\stm32f1xx_ll_usart.h)(0x591B03DA)
 I (C:\Developer\SDK\STM32\STM32F1xx_HAL_Driver\Inc\stm32f1xx_ll_wwdg.h)(0x591B03DB)
-F (..\Src\intercom\header.h)(0x5A28C642)()
-F (..\Src\intercom\Device_Handler.c)(0x5A290BE8)(--c99 -c --cpu Cortex-M3 -D__EVAL -g -W -O0 --apcs=interwork -I../Inc -IC:\Developer\SDK\STM32\CMSIS\Device\ST\STM32F1xx\Include -IC:\Developer\SDK\STM32\STM32F1xx_HAL_Driver\Inc --C99-I C:\content\github\stm32F1xx_QuickStart\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32F10X_MD_VL -DSTM32F100xB -DHSE_VALUE="8000000U" -DUSE_FULL_LL_DRIVER-o stm32vl-discovery\device_handler.o --omf_browse stm32vl-discovery\device_handler.crf --depend stm32vl-discovery\device_handler.d)
-I (..\Src\intercom\header.h)(0x5A28C642)
+F (..\Src\intercom\header.h)(0x5A2A521F)()
+F (..\Src\intercom\Device_Handler.c)(0x5A2A5464)(--c99 -c --cpu Cortex-M3 -D__EVAL -g -W -O0 --apcs=interwork -I../Inc -IC:\Developer\SDK\STM32\CMSIS\Device\ST\STM32F1xx\Include -IC:\Developer\SDK\STM32\STM32F1xx_HAL_Driver\Inc --C99-I C:\content\github\stm32F1xx_QuickStart\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32F10X_MD_VL -DSTM32F100xB -DHSE_VALUE="8000000U" -DUSE_FULL_LL_DRIVER-o stm32vl-discovery\device_handler.o --omf_browse stm32vl-discovery\device_handler.crf --depend stm32vl-discovery\device_handler.d)
+I (..\Src\intercom\header.h)(0x5A2A521F)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x54C28C08)
 I (C:\Developer\SDK\STM32\CMSIS\Device\ST\STM32F1xx\Include\stm32f1xx.h)(0x591B03C4)
 I (C:\Developer\SDK\STM32\CMSIS\Device\ST\STM32F1xx\Include\stm32f100xb.h)(0x591B03C4)
@@ -236,8 +236,8 @@ I (C:\Developer\SDK\STM32\STM32F1xx_HAL_Driver\Inc\stm32f1xx_ll_dma.h)(0x591B03D
 I (..\Src\intercom\../crc/crc.h)(0x5A271051)
 I (..\Src\intercom\../hostapi/core.h)(0x5A281D17)
 I (..\Src\intercom\../hostapi/host_opcode.h)(0x5A27ECBC)
-F (..\Src\intercom\Device.c)(0x5A292D51)(--c99 -c --cpu Cortex-M3 -D__EVAL -g -W -O0 --apcs=interwork -I../Inc -IC:\Developer\SDK\STM32\CMSIS\Device\ST\STM32F1xx\Include -IC:\Developer\SDK\STM32\STM32F1xx_HAL_Driver\Inc --C99-I C:\content\github\stm32F1xx_QuickStart\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32F10X_MD_VL -DSTM32F100xB -DHSE_VALUE="8000000U" -DUSE_FULL_LL_DRIVER-o stm32vl-discovery\device.o --omf_browse stm32vl-discovery\device.crf --depend stm32vl-discovery\device.d)
-I (..\Src\intercom\header.h)(0x5A28C642)
+F (..\Src\intercom\Device.c)(0x5A2A5339)(--c99 -c --cpu Cortex-M3 -D__EVAL -g -W -O0 --apcs=interwork -I../Inc -IC:\Developer\SDK\STM32\CMSIS\Device\ST\STM32F1xx\Include -IC:\Developer\SDK\STM32\STM32F1xx_HAL_Driver\Inc --C99-I C:\content\github\stm32F1xx_QuickStart\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32F10X_MD_VL -DSTM32F100xB -DHSE_VALUE="8000000U" -DUSE_FULL_LL_DRIVER-o stm32vl-discovery\device.o --omf_browse stm32vl-discovery\device.crf --depend stm32vl-discovery\device.d)
+I (..\Src\intercom\header.h)(0x5A2A521F)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x54C28C08)
 I (C:\Developer\SDK\STM32\CMSIS\Device\ST\STM32F1xx\Include\stm32f1xx.h)(0x591B03C4)
 I (C:\Developer\SDK\STM32\CMSIS\Device\ST\STM32F1xx\Include\stm32f100xb.h)(0x591B03C4)
@@ -264,8 +264,8 @@ I (..\Src\hostapi\core.h)(0x5A281D17)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C28C08)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x54C28C08)
 I (..\Src\hostapi\host_opcode.h)(0x5A27ECBC)
-F (..\Src\hostapi\api_MCU.c)(0x5A28173C)(--c99 -c --cpu Cortex-M3 -D__EVAL -g -W -O0 --apcs=interwork -I../Inc -IC:\Developer\SDK\STM32\CMSIS\Device\ST\STM32F1xx\Include -IC:\Developer\SDK\STM32\STM32F1xx_HAL_Driver\Inc --C99-I C:\content\github\stm32F1xx_QuickStart\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32F10X_MD_VL -DSTM32F100xB -DHSE_VALUE="8000000U" -DUSE_FULL_LL_DRIVER-o stm32vl-discovery\api_mcu.o --omf_browse stm32vl-discovery\api_mcu.crf --depend stm32vl-discovery\api_mcu.d)
-I (..\Src\hostapi\../intercom/header.h)(0x5A28C642)
+F (..\Src\hostapi\api_MCU.c)(0x5A2A5EF8)(--c99 -c --cpu Cortex-M3 -D__EVAL -g -W -O0 --apcs=interwork -I../Inc -IC:\Developer\SDK\STM32\CMSIS\Device\ST\STM32F1xx\Include -IC:\Developer\SDK\STM32\STM32F1xx_HAL_Driver\Inc --C99-I C:\content\github\stm32F1xx_QuickStart\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32F10X_MD_VL -DSTM32F100xB -DHSE_VALUE="8000000U" -DUSE_FULL_LL_DRIVER-o stm32vl-discovery\api_mcu.o --omf_browse stm32vl-discovery\api_mcu.crf --depend stm32vl-discovery\api_mcu.d)
+I (..\Src\hostapi\../intercom/header.h)(0x5A2A521F)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x54C28C08)
 I (C:\Developer\SDK\STM32\CMSIS\Device\ST\STM32F1xx\Include\stm32f1xx.h)(0x591B03C4)
 I (C:\Developer\SDK\STM32\CMSIS\Device\ST\STM32F1xx\Include\stm32f100xb.h)(0x591B03C4)
